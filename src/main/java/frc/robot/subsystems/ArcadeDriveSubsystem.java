@@ -5,7 +5,6 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -17,9 +16,6 @@ public class ArcadeDriveSubsystem extends SubsystemBase {
   private final CANSparkMax leftBackMotor = new CANSparkMax(0, MotorType.kBrushless);
   private final CANSparkMax rightFrontMotor = new CANSparkMax(0, MotorType.kBrushless);
   private final CANSparkMax rightBackMotor = new CANSparkMax(0, MotorType.kBrushless);
-  
-  private RelativeEncoder leftFrontEncoder = leftFrontMotor.getEncoder();
-  private RelativeEncoder rightFrontEncoder = rightFrontMotor.getEncoder();
 
   DifferentialDrive differentialDrive = new DifferentialDrive(leftFrontMotor, rightFrontMotor);
 
@@ -36,9 +32,6 @@ public class ArcadeDriveSubsystem extends SubsystemBase {
     // Make back motors follow front motors
     leftBackMotor.follow(leftFrontMotor);
     rightBackMotor.follow(rightFrontMotor);
-
-    leftFrontEncoder.setPosition(0);
-    rightFrontEncoder.setPosition(0);
   }
   
   @Override
